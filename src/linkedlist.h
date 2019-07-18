@@ -70,7 +70,7 @@ class LinkedList
 	int end();  // returns TRUE if the cursor points to 0
 	void insertBefore( T *);  // insert an enrty before the cursor, and set the cursor to the new entry
 	void insertAfter( T * );  // insert an enrty after the cursor and set the cursor to the new entry
-	void remove( int keep_data );  // remove the entry at the cursor, delete the data, and set cursor to the next entry
+	void remove( int keep_data = 0 );  // remove the entry at the cursor, delete the data, and set cursor to the next entry
 	void unlink();  // unlink the entry at the cursor, keep the data, and set cursor to the next entry
 	void clear();  // clears the list
 	int empty();  // returns TRUE if the list is empty
@@ -393,7 +393,7 @@ int LinkedList<T>::empty()
 }
 
 template <class T>
-void LinkedList<T>::remove( int keep_data = 0 )
+void LinkedList<T>::remove( int keep_data )
 {
 	ListEntry *prev, *next, *deleted;
 	ListEntry **curp;

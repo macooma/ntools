@@ -213,6 +213,7 @@ void NGen::udpSender()
 		addrin_len = sizeof( struct sockaddr_in );
 		packetsock = rawsock = 0;
 		next_stream = 0;
+		(void)type;
 		
 		// set the scheduling parameters
 		if( rt )
@@ -404,7 +405,8 @@ void NGen::error( string err, int errnum )
 		*mystring += err;
 		if( errnum )
 		{
-			strerror_r( errnum, buf, 256 );
+			char *c = strerror_r( errnum, buf, 256 );
+			(void)c;
 			*mystring += buf;
 		}
 		*mystring += "\n";

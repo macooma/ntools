@@ -35,6 +35,7 @@
 #include <netinet/if_ether.h>
 #include <netpacket/packet.h>
 #include <errno.h>
+#include <unistd.h>
 
 #include "defs.h"
 #include "utils.h"

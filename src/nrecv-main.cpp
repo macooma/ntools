@@ -64,6 +64,7 @@ int main( int argc, char **argv )
 		
 		par_int = par_p1 = par_p2 = par_p3 = par_level = par_id = 0;
 		delay = jitter = 0;
+		(void)delay; (void)jitter;
 		
 		// process the command line arguments
 		if( ( argc > 1 ) && ( !strcmp( "-f", argv[1] ) ) )   // process the script file

@@ -32,6 +32,7 @@
 #include <netinet/tcp.h>
 #include <netpacket/packet.h>
 #include <linux/if_ether.h>
+#include <unistd.h>
 
 #include "nrecv.h"
 #include "defs.h"
@@ -529,7 +530,8 @@ void NRecv::error( string err, int errnum )
 		*mystring += err;
 		if( errnum )
 		{
-			strerror_r( errnum, buf, 256 );
+			char *c = strerror_r( errnum, buf, 256 );
+			(void)c;
 			*mystring += buf;
 		}
 		*mystring += "\n";
@@ -814,6 +816,7 @@ void *NRecv::udpReceiver( Interface *myiface )
 		}
 		buflen = 1500;  // maximum packet size
 		addrlen = sizeof( struct sockaddr_ll );
+		(void) buflen; (void) addrlen;
 		myiface->tid = pthread_self();
 		myiface->sock = socket( PF_PACKET, SOCK_DGRAM, htons( ETH_P_ALL ) );  // packet socket to capture everything
 		if( myiface->sock == -1 )
