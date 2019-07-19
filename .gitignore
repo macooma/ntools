@@ -1,0 +1,7 @@
+*.o
+src/nclient
+src/nemu
+src/nemud
+src/ngen
+src/nrecv
+src/nserver
